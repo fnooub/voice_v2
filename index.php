@@ -43,7 +43,12 @@ if (isset($_POST['submit'])) {
 		}
 
 		$conts = multi_curl($urls);
-		$tieude = get_rows('<title>', '</title>', $conts);
+		if ($flag == 'mtc') {
+			$tieude = get_rows('<div class="h1 mb-4 font-weight-normal nh-read__title">\s*', '\s*</div>', $conts);
+		} else {
+			$tieude = get_rows('<title>', '</title>', $conts);
+		}
+		
 		$datas = array_combine($tieude, $urls);
 	}
 }
