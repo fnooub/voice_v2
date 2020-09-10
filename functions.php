@@ -2,7 +2,7 @@
 
 function base_url($uri = '')
 {
-	return 'http://eapal.herokuapp.com/' . $uri;
+	return 'http://localhost/regex/' . $uri;
 }
 
 function get_var($param)
@@ -39,6 +39,17 @@ function get_links($input)
 {
 	preg_match_all('/href=([\"\'])\s*(.+?)\s*\1/', $input, $output);
 	return $output[2];
+}
+
+function wp_strip_all_tags( $string, $remove_breaks = false ) {
+	$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
+	$string = strip_tags( $string, '<p><br>' );
+
+	if ( $remove_breaks ) {
+		$string = preg_replace( '/[\r\n\t ]+/', ' ', $string );
+	}
+
+	return trim( $string );
 }
 
 function single_curl($link)

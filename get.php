@@ -57,7 +57,7 @@ elseif ($flag == 'tcv') {
  * output
  */
 $tieude = trim($tieude);
-$noidung = trim($noidung);
+$noidung = trim(wp_strip_all_tags($noidung));
 
 // nl2p
 if ($site['nl2p'] == 'yes') {
