@@ -2,7 +2,7 @@
 
 function base_url($uri = '')
 {
-	return 'http://localhost/regex/' . $uri;
+	return 'http://eapal.herokuapp.com/' . $uri;
 }
 
 function get_var($param)
