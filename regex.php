@@ -85,7 +85,7 @@ function str_split_search($str)
 <body>
 <?php include "navbar.php"; ?>
 <form action="" method="post">
-	<input type="hidden" name="site_id" value="1">
+	<input type="hidden" name="site_id" value="<?= $site['id'] ?>">
 	<textarea name="s" style="width: 100%" placeholder="search"></textarea>
 	<textarea name="r" style="width: 100%" placeholder="replace"></textarea>
 	<input type="radio" name="flag" value="u"> <b>/u</b>
