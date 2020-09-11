@@ -49,11 +49,11 @@ if (isset($_POST['submit'])) {
 		}
 		// tcv
 		elseif ($flag == 'tcv') {
-			$tieude = get_row('<h2 class="title">', '</h2>', $conts);
+			$tieude = get_rows('<h2 class="title">', '</h2>', $conts);
 		}
 		// ttv
 		elseif ($flag == 'ttv') {
-			$tieude = get_row('<h2>', '</h2>', $conts);
+			$tieude = get_rows('<h2>', '</h2>', $conts);
 		}
 		// khac
 		else {
