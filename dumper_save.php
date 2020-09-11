@@ -7,7 +7,9 @@ $world_dumper = Shuttle_Dumper::create(array(
 	'db_name' => 'tgb47slod4ufwbhf',
 ));
 
+$voice = time() . '.sql';
 // dump the database to plain text file
-$world_dumper->dump('voice.sql');
+$world_dumper->dump($voice);
 
-echo '<a href="voice.sql">voice.sql</a>';
+?>
+<a href="<?= $voice ?>"><?= $voice ?></a>

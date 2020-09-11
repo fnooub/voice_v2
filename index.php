@@ -43,9 +43,20 @@ if (isset($_POST['submit'])) {
 		}
 
 		$conts = multi_curl($urls);
+		// mtc
 		if ($flag == 'mtc') {
-			$tieude = get_rows('<div class="h1 mb-4 font-weight-normal nh-read__title">\s*', '\s*</div>', $conts);
-		} else {
+			$tieude = get_rows('<div class="h1 mb-4 font-weight-normal nh-read__title">', '</div>', $conts);
+		}
+		// tcv
+		elseif ($flag == 'tcv') {
+			$tieude = get_row('<h2 class="title">', '</h2>', $conts);
+		}
+		// ttv
+		elseif ($flag == 'ttv') {
+			$tieude = get_row('<h2>', '</h2>', $conts);
+		}
+		// khac
+		else {
 			$tieude = get_rows('<title>', '</title>', $conts);
 		}
 		
@@ -103,7 +114,7 @@ if ( ! $site ) exit('err');
 	<div style="white-space: nowrap;overflow: auto;">
 		<?php $count = 1 ?>
 		<?php foreach ($datas as $tieude => $url): ?>
-			<pre>[<?= $count ?>] =&gt; <a href="<?= base_url('get.php?site_id=' . $site['id'] . '&flag=' . $site['flag'] . '&link=' . $url) ?>"><?= $tieude ?></a></pre>
+			<pre>[<?= $count ?>] =&gt; <a href="<?= base_url('get.php?site_id=' . $site['id'] . '&flag=' . $site['flag'] . '&link=' . $url) ?>"><?= trim($tieude) ?></a></pre>
 			<?php $count++ ?>
 		<?php endforeach ?>
 	</div>
