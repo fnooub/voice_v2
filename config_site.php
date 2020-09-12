@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 	}
 
 	if (!isset($error)) {
-		$query = "UPDATE site SET start = :start, end = :end, nl2p = :nl2p, loc = :loc, date_update = :date_update WHERE id = :id";
+		$query = "UPDATE site SET start = :start, end = :end, nl2p = :nl2p, loc = :loc, date_update = :date_update, flag = :flag, url = :url WHERE id = :id";
 		$stmt = $db->prepare($query);
 		$stmt->execute(array(
 			':id' => $id,
@@ -27,7 +27,9 @@ if (isset($_POST['submit'])) {
 			':end' => $end,
 			':nl2p' => $nl2p,
 			':loc' => $loc,
-			':date_update' => time()
+			':date_update' => time(),
+			':flag' => $flag,
+			':url' => $url
 		));
 
 		/**
