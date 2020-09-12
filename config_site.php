@@ -112,8 +112,7 @@ if ( ! $site ) exit('err');
 <hr>
 <form method="post">
 	<input type="hidden" name="id" value="<?= $site_id ?>">
-	<input type="hidden" name="url" value="<?= $site['url'] ?>">
-	<input type="hidden" name="flag" value="<?= $site['flag'] ?>">
+	<input type="text" name="url" value="<?= $site['url'] ?>">
 	<input type="number" name="start" onfocus="this.value=''" value="<?= $site['start'] ?>">
 	<input type="number" name="end" onfocus="this.value=''" value="<?= $site['end'] ?>">
 	<input type="checkbox" name="loc"<?php if ($site['loc'] == 'yes') echo 'checked' ?>> lọc
