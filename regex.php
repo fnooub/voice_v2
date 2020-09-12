@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 		$s = str_split_search($s);
 	}
 	if (isset($quote)) {
-		$s = preg_quote($s);
+		$s = regex_quote($s);
 	}
 	if (!empty($s)) {
 		$query = "INSERT INTO regex (s, r, flag, site_id) values (:s, :r, :flag, :site_id)";
@@ -73,6 +73,15 @@ function str_split_search($str)
 	$str = preg_split('/(?<!^)(?!$)/u', $str );
 	return implode("\s*", $str);
 }
+
+function regex_quote($str)
+{
+	$subject = preg_quote($str, '/');
+	$search = array('\(\.\+\?\)', '\(\.\*\?\)', '\.\*\?', '\.\+\?');
+	$replace = array('(.+?)', '(.*?)', '.*?', '.+?');
+	return str_replace($search, $replace, $subject);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
