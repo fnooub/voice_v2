@@ -117,7 +117,7 @@ if ( ! $site ) exit('err');
 	<input type="number" name="end" onfocus="this.value=''" value="<?= $site['end'] ?>">
 	<input type="checkbox" name="loc"<?php if ($site['loc'] == 'yes') echo 'checked' ?>> lọc
 	<input type="checkbox" name="nl2p"<?php if ($site['nl2p'] == 'yes') echo 'checked' ?>> nl2p
-	<input type="text" size="5" value="<?= $site['flag'] ?>">
+	<input type="text" name="flag" size="5" value="<?= $site['flag'] ?>">
 	<input type="submit" name="submit" value="Config">
 </form>
 <p><a href="regex.php?site_id=<?= $site['id'] ?>">Regex</a></p>
