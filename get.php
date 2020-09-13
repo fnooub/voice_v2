@@ -56,7 +56,7 @@ elseif ($flag == 'tcv') {
 /**
  * output
  */
-$tieude = trim($tieude);
+$tieude = trim(get_title($tieude));
 $noidung = trim(wp_strip_all_tags($noidung));
 
 // nl2p
@@ -100,3 +100,10 @@ foreach ($regexs as $regex) {
  * show
  */
 echo "$tieude<br>➥<br>➥<br><br>$noidung<br>⊙⊙";
+
+function get_title($str)
+{
+	$str = preg_replace('@chương 0+(\d+)@siu', 'Chương $1', $str);
+	$str = preg_replace('/\s*\(.+/', '', $str);
+	return $str;
+}
