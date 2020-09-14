@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 		$s = str_split_search($s);
 	}
 	if (isset($quote)) {
-		$s = regex_quote($s, '/');
+		$s = regex_quote($s);
 	}
 	if (!empty($s)) {
 		$query = "INSERT INTO regex (s, r, flag, site_id) values (:s, :r, :flag, :site_id)";
