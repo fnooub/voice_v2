@@ -54,10 +54,6 @@ if (isset($_POST['submit'])) {
 		elseif ($flag == 'tcv') {
 			$tieude = get_rows('<h2 class="title">', '</h2>', $conts);
 		}
-		// ttv
-		elseif ($flag == 'ttv') {
-			$tieude = get_rows('<h2>', '</h2>', $conts);
-		}
 		// khac
 		else {
 			$tieude = get_rows('<title>', '</title>', $conts);
