@@ -215,6 +215,9 @@ function loc($word)
 	$word = html_entity_decode($word);
 	// loc chu
 	$word = preg_replace(array('/\bria\b/iu', '/\bsum\b/iu', '/\bboa\b/iu', '/\bmu\b/iu', '/\bah\b/iu', '/\buh\b/iu', '/\bcm\b/iu', '/\bkm\b/iu', '/\bkg\b/iu', '/\bcmn\b/iu', '/\bgay go\b/iu'), array('dia', 'xum', 'bo', 'mư', 'a', 'ư', 'xen ti mét', 'ki lô mét', 'ki lô gam', 'con mẹ nó', 'khó khăn'), $word);
+	// romaji - latinh
+	$word = str_replace(array('ō', 'ā', 'ē', 'ī', 'ū'), array('o', 'a', 'e', 'i', 'u'), $word);
+
 	// loc ki tu dac biet
 	$word = preg_replace('/…/', '...', $word);
 	$word = preg_replace('/\.(?:\s*\.)+/', '...', $word);
