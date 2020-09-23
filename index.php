@@ -33,8 +33,11 @@ if (isset($_POST['submit'])) {
 		/**
 		 * get du lieu
 		 */
-
-		$str = single_curl(base_url('set.php?flag=' . $flag . '&link=' . $url));
+		if (file_exists("$id.json")) {
+			$str = file_get_contents("$id.json");
+		} else {
+			$str = single_curl(base_url('set.php?flag=' . $flag . '&link=' . $url));
+		}
 
 		$data = json_decode($str, true);
 
@@ -46,7 +49,17 @@ if (isset($_POST['submit'])) {
 		// mtc
 		if ($flag == 'mtc') {
 			$tieude = get_rows('<div class="h1 mb-4 font-weight-normal nh-read__title">', '</div>', $conts);
-		} else {
+		}
+		// tcv
+		elseif ($flag == 'tcv') {
+			$tieude = get_rows('<h2 class="title">', '</h2>', $conts);
+		}
+		// ttv
+		elseif ($flag == 'ttv') {
+			$tieude = get_rows('<h2>', '</h2>', $conts);
+		}
+		// khac
+		else {
 			$tieude = get_rows('<title>', '</title>', $conts);
 		}
 		
