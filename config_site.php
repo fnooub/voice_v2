@@ -117,7 +117,7 @@ if ( ! $site ) exit('err');
 	<div style="white-space: nowrap;overflow: auto;">
 		<?php $count = 1 ?>
 		<?php foreach ($datas as $tieude => $url): ?>
-			<pre>[<?= $count ?>] =&gt; <a href="<?= base_url('get.php?site_id=' . $site['id'] . '&flag=' . $site['flag'] . '&link=' . $url) ?>"><?= $tieude ?></a></pre>
+			<pre>[<?= $count ?>] =&gt; <a href="<?= base_url('get.php?site_id=' . $site['id'] . '&flag=' . $site['flag'] . '&link=' . $url) ?>"><?= trim($tieude) ?></a></pre>
 			<?php $count++ ?>
 		<?php endforeach ?>
 	</div>
