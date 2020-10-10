@@ -41,6 +41,20 @@ function get_links($input)
 	return $output[2];
 }
 
+function d04($int)
+{
+	return sprintf( "%04d", $int );
+}
+
+function strip_all_tags( $string )
+{
+	$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
+	$string = strip_tags( $string, '<p><br>' );
+	$string = preg_replace('/(< *\/? *p *>|< *br *\/? *>)/i', "\n", $string);
+	$string = preg_replace( '/[\r\n\t]+/', "\n\n", $string );
+	return trim( $string );
+}
+
 function wp_strip_all_tags( $string, $remove_breaks = false ) {
 	$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
 	$string = strip_tags( $string, '<p><br>' );
@@ -50,6 +64,26 @@ function wp_strip_all_tags( $string, $remove_breaks = false ) {
 	}
 
 	return trim( $string );
+}
+
+function pbr2line($string, $remove_breaks = false)
+{
+	$string = preg_replace('/(< *\/? *p *>|< *br *\/? *>)/i', "\n", $string);
+	if ( $remove_breaks ) {
+		$string = preg_replace('/[\r\n\t]+/', "\n\n", $string);
+	}
+	return trim( $string );
+}
+
+function limit_words($text, $limit) {
+	$word_arr = explode(" ", $text);
+
+	if (count($word_arr) > $limit) {
+		$words = implode(" ", array_slice($word_arr , 0, $limit) ) . ' ...';
+		return $words;
+	}
+
+	return $text;
 }
 
 function single_curl($link)
@@ -210,23 +244,25 @@ if ( ! function_exists('url_slug'))
 	}
 }
 
-function loc($word)
+function loc($word, $google_voice = false)
 {
 	$word = html_entity_decode($word);
-	// loc chu
-	$word = preg_replace(array('/\bria\b/iu', '/\bsum\b/iu', '/\bboa\b/iu', '/\bmu\b/iu', '/\bah\b/iu', '/\buh\b/iu', '/\bcm\b/iu', '/\bkm\b/iu', '/\bkg\b/iu', '/\bcmn\b/iu', '/\bgay go\b/iu'), array('dia', 'xum', 'bo', 'mư', 'a', 'ư', 'xen ti mét', 'ki lô mét', 'ki lô gam', 'con mẹ nó', 'khó khăn'), $word);
-	// romaji - latinh
-	$word = str_replace(array('ō', 'ā', 'ē', 'ī', 'ū'), array('o', 'a', 'e', 'i', 'u'), $word);
 
+	if ( $google_voice ) {
+		// loc chu
+		$word = preg_replace(array('/\bria\b/iu', '/\bsum\b/iu', '/\bboa\b/iu', '/\bmu\b/iu', '/\bah\b/iu', '/\buh\b/iu', '/\bcm\b/iu', '/\bkm\b/iu', '/\bkg\b/iu', '/\bcmn\b/iu', '/\bgay go\b/iu'), array('dia', 'xum', 'bo', 'mư', 'a', 'ư', 'xen ti mét', 'ki lô mét', 'ki lô gam', 'con mẹ nó', 'khó khăn'), $word);
+	}
 	// loc ki tu dac biet
 	$word = preg_replace('/…/', '...', $word);
 	$word = preg_replace('/\.(?:\s*\.)+/', '...', $word);
 	$word = preg_replace('/,(?:\s*,)+/', ',', $word);
 	$word = preg_replace('/-(?:\s*-)+/', '', $word);
-	$word = preg_replace('/-*o\s*(0|O)\s*o-*/', '...', $word);
-	$word = preg_replace('/~/', '-', $word);
-	$word = preg_replace('/\*/', '', $word);
 	$word = preg_replace('/ +(\.|\?|!|,)/', '$1', $word);
+	$word = preg_replace('/-*o\s*(0|O)\s*o-*/', '...', $word);
+
+	//$word = str_replace('*', '', $word);
+	//$word = str_replace('~', '-', $word);
+
 	// thay the
 	$word = str_replace('"..."', '"Lặng!"', $word);
 	return $word;
