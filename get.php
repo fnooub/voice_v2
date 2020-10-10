@@ -68,7 +68,7 @@ if ($site['nl2p'] == 'yes') {
 
 // loc
 if ($site['loc'] == 'yes') {
-	$noidung = loc($noidung);
+	$noidung = loc($noidung, true);
 }
 
 /**
