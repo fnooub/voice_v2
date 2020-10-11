@@ -43,8 +43,8 @@ elseif ($flag == 'ttv') {
 }
 // truyenfull
 elseif ($flag == 'tf') {
-	$tieude1 = get_rows('<span itemprop="name">', '</span>', $str);
-	$tieude = $tieude1[2];
+	$tieude = get_row('<h2><a.+?>', '</a></h2>', $str);
+	$tieude = strip_tags($tieude);
 	$noidung = get_row('<div id="chapter-c" class="chapter-c"><div class="visible-md visible-lg ads-responsive incontent-ad" id="ads-chapter-pc-top" align="center" style="height:90px"></div>', '</div>', $str);
 }
 // TRUYENCV
@@ -56,14 +56,14 @@ elseif ($flag == 'tcv') {
 /**
  * output
  */
-$tieude = trim(get_title($tieude));
-$noidung = trim(wp_strip_all_tags($noidung));
+$tieude = get_title($tieude);
 
 // nl2p
 if ($site['nl2p'] == 'yes') {
-	$noidung = strip_tags($noidung, '<br><p>');
-	$noidung = preg_replace('/((<br\s*\/?>|<\/?p>)\s*)+/', "\n", $noidung);
+	$noidung = strip_all_tags($noidung, true);
 	$noidung = nl2p($noidung);
+} else {
+	$noidung = strip_all_tags($noidung);
 }
 
 // loc
@@ -105,5 +105,6 @@ function get_title($str)
 {
 	$str = preg_replace('@chương 0+(\d+)@siu', 'Chương $1', $str);
 	$str = preg_replace('/\s*\(.+/', '', $str);
-	return $str;
+
+	return trim( $str );
 }

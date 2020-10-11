@@ -46,32 +46,26 @@ function d04($int)
 	return sprintf( "%04d", $int );
 }
 
-function strip_all_tags( $string )
+function strip_all_tags( $string, $remove_breaks = false )
 {
 	$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
 	$string = strip_tags( $string, '<p><br>' );
-	$string = preg_replace('/(< *\/? *p *>|< *br *\/? *>)/i', "\n", $string);
-	$string = preg_replace( '/[\r\n\t]+/', "\n\n", $string );
+	if ( $remove_breaks ) {
+		$string = preg_replace('/(< *\/? *p *>|< *br *\/? *>)/i', "\n", $string);
+		$string = preg_replace( '/[\r\n\t]+/', "\n\n", $string );		
+	}
+
 	return trim( $string );
 }
 
 function wp_strip_all_tags( $string, $remove_breaks = false ) {
 	$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
-	$string = strip_tags( $string, '<p><br>' );
+	$string = strip_tags( $string );
 
 	if ( $remove_breaks ) {
 		$string = preg_replace( '/[\r\n\t ]+/', ' ', $string );
 	}
 
-	return trim( $string );
-}
-
-function pbr2line($string, $remove_breaks = false)
-{
-	$string = preg_replace('/(< *\/? *p *>|< *br *\/? *>)/i', "\n", $string);
-	if ( $remove_breaks ) {
-		$string = preg_replace('/[\r\n\t]+/', "\n\n", $string);
-	}
 	return trim( $string );
 }
 
