@@ -20,7 +20,7 @@ $data = [];
 if ($flag == 'mtc') {
 	$soChuong = get_rows('<div class="font-weight-semibold h4 mb-1">', '</div>', $str);
 
-	for ($i = 1; $i <= $soChuong[1]; $i++) {
+	for ($i = 1; $i <= trim($soChuong[0]); $i++) {
 		$data[] = $link . '/chuong-' . $i;
 	}	
 }
