@@ -27,7 +27,7 @@ if (isset($_POST['link'])) {
 	// tct
 	elseif (preg_match('@truyencuatui@si', $link)) {
 		$flag = 'tct';
-		$link = preg_replace('/https?:\/\/truyencuatui\.net\/truyen/', 'https://m.truyencuatui.net/chuong', $link);
+		$link = preg_replace('/https?:\/\/(m\.)?truyencuatui\.net\/truyen/', 'https://m.truyencuatui.net/chuong', $link);
 	}
 
 	$stmt = $db->prepare('SELECT id FROM site WHERE url = :url');
