@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 		$conts = multi_curl($urls);
 		// mtc
 		if ($flag == 'mtc') {
-			$tieude = get_rows('<title>', '</title>', $conts);
+			$tieude = get_rows('<div class=".+?nh-read__title">', '</div>', $conts);
 		}
 		// tcv
 		elseif ($flag == 'tcv') {
