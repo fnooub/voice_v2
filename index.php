@@ -50,10 +50,6 @@ if (isset($_POST['submit'])) {
 		if ($flag == 'mtc') {
 			$tieude = get_rows('<div class="h1 mb-4 font-weight-normal nh-read__title">', '</div>', $conts);
 		}
-		// tcv
-		elseif ($flag == 'tcv') {
-			$tieude = get_rows('<h2 class="title">', '</h2>', $conts);
-		}
 		// tct
 		elseif ($flag == 'tct') {
 			$tieude = get_rows('<h1>', '</h1>', $conts);
