@@ -73,4 +73,16 @@ elseif ($flag == 'tcv') {
 	}
 }
 
+// tct
+elseif ($flag == 'tct') {
+	$list = get_row('<div class="txt chuongs">', '</div>', $str);
+
+	$links = get_links($list);
+
+	$data = array();
+	foreach ($links as $lnk) {
+		$data[] = 'https://m.truyencuatui.net' . $lnk;
+	}
+}
+
 echo json_encode($data);

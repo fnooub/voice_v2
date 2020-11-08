@@ -24,6 +24,11 @@ if (isset($_POST['link'])) {
 	elseif (preg_match('@tangthuvien@si', $link)) {
 		$flag = 'ttv';
 	}
+	// tct
+	elseif (preg_match('@truyencuatui@si', $link)) {
+		$flag = 'tct';
+		$link = preg_replace('/https?:\/\/truyencuatui\.net\/truyen/', 'https://m.truyencuatui.net/chuong', $link);
+	}
 
 	$stmt = $db->prepare('SELECT id FROM site WHERE url = :url');
 	$stmt->execute(array(':url' => $link ));
@@ -81,7 +86,7 @@ $result = $stmt->fetchAll();
 		<?php foreach ($result as $row): ?>
 			<?php
 			$name = parse_url($row['url'])['path'];
-			$name = str_replace(array('/truyen/', '/doc-truyen/', '/'), '', $name);
+			$name = str_replace(array('/truyen/', '/doc-truyen/', '/chuong/', '/', '.html'), '', $name);
 			?>
 			<pre>[<?= $row['id'] ?>] <a href="config_site.php?site_id=<?= $row['id'] ?>"><?= $name ?></a> <a href="regex.php?site_id=<?= $row['id'] ?>" style="background-color: yellow">Regex</a> <a href="<?= $row['url'] ?>"><span style="background-color: #c9f795"><?= $row['flag'] ?></span></a> <a href="<?= base_url('save.php?site_id=' . $row['id']) ?>"><span style="background-color: #ffc107">save</span></a></pre>
 		<?php endforeach ?>
