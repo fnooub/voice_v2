@@ -107,7 +107,7 @@ function regex_quote($str)
 	<br>
 	<input type="submit" name="submit" value="Replace">
 </form>
-<p><a href="?xoa_site=<?= $site['id'] ?>" onclick = "if (! confirm('Xoá site?')) { return false; }">Xoá site</a> | <a href="config_site.php?site_id=<?= $site['id'] ?>">Config site</a></p>
+<p><a href="?xoa_site=<?= $site['id'] ?>" onclick = "if (! confirm('Xoá site?')) { return false; }">Xoá site</a> | <a href="config_site.php?site_id=<?= $site['id'] ?>">Config site</a> | <a href="clone.php?site_id=<?= $site['id'] ?>">Clone</a></p>
 <hr>
 <div style="white-space: nowrap;overflow: auto;">
 	<?php foreach ($regexs as $regex): ?>
