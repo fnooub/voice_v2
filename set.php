@@ -25,6 +25,16 @@ if ($flag == 'mtc') {
 	}	
 }
 /**
+ * vtruyen.com
+ */
+elseif ($flag == 'vt') {
+	$soChuong = get_rows('<div class="font-weight-semibold h4 mb-1">', '</div>', $str);
+
+	for ($i = 1; $i <= trim($soChuong[0]); $i++) {
+		$data[] = $link . '/chuong-' . $i;
+	}	
+}
+/**
  * tang thu vien
  */
 elseif ($flag == 'ttv') {

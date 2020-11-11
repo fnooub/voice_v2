@@ -12,6 +12,10 @@ if (isset($_POST['link'])) {
 	if (preg_match('@metruyenchu@si', $link)) {
 		$flag = 'mtc';
 	}
+	// vtruyen
+	elseif (preg_match('@vtruyen@si', $link)) {
+		$flag = 'vt';
+	}
 	// truyencv
 	elseif (preg_match('@truyencv@si', $link)) {
 		$flag = 'tcv';
