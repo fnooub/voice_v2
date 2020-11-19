@@ -49,7 +49,7 @@ function d04($int)
 function strip_all_tags( $string, $remove_breaks = false )
 {
 	$string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string );
-	$string = strip_tags( $string, '<p><br>' );
+	$string = strip_tags( $string, '<p><br><img>' );
 	if ( $remove_breaks ) {
 		$string = preg_replace('/(< *\/? *p *>|< *br *\/? *>)/i', "\n", $string);
 		$string = preg_replace( '/[\r\n\t]+/', "\n\n", $string );		
