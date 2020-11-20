@@ -53,7 +53,7 @@ elseif ($flag == 'tf') {
 	$tieude = get_row('<h2><a.+?>', '</a></h2>', $str);
 	$tieude = strip_tags($tieude);
 	$noidung = get_row('<div id="chapter-c" class="chapter-c"><div class="visible-md visible-lg ads-responsive incontent-ad" id="ads-chapter-pc-top" align="center" style="height:90px"></div>', '</div>', $str);
-	$noidung = preg_replace('/\n/', ' ', $noidung);
+	$noidung = preg_replace('/[\r\n\t]+/', ' ', $noidung);
 }
 // TRUYENCV
 elseif ($flag == 'tcv') {
