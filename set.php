@@ -94,5 +94,14 @@ elseif ($flag == 'tct') {
 		$data[] = 'https://m.truyencuatui.net' . $lnk;
 	}
 }
+// bns
+elseif ($flag == 'bns') {
+	$links = get_rows('<div class="mucluc-chuong"><a href="', '">', $str);
+
+	$data = array();
+	foreach ($links as $lnk) {
+		$data[] = 'https://bachngocsach.com' . $lnk;
+	}
+}
 
 echo json_encode($data);
