@@ -244,7 +244,7 @@ function loc($word, $google_voice = false)
 
 	if ( $google_voice ) {
 		// loc chu
-		$word = preg_replace(array('/\bria\b/i', '/\bsum\b/i', '/\bboa\b/i', '/\bmu\b/i', '/\bah\b/i', '/\buh\b/i', '/\bgay go\b/i'), array('dia', 'xum', 'bo', 'mư', 'a', 'ư', 'khó khăn'), $word);
+		$word = preg_replace(array('/\bria\b/iu', '/\bsum\b/iu', '/\bboa\b/iu', '/\bmu\b/iu', '/\bah\b/iu', '/\buh\b/iu', '/\bgay go\b/iu'), array('dia', 'xum', 'bo', 'mư', 'a', 'ư', 'khó khăn'), $word);
 	}
 	// loc ki tu dac biet
 	$word = preg_replace('/…/', '...', $word);
