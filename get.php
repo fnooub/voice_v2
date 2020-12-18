@@ -73,7 +73,7 @@ elseif ($flag == 'bns') {
 // kh
 elseif ($flag == 'kh') {
 	$tieude = get_row('<h1.+?>', '</h1>', $str);
-	$noidung = get_row('<div class="story-content  story-content-2">', '<div class="w-100 center-block center-text">', $str);
+	$noidung = get_row('<div class="story-content.+?">', '<div class="w-100 center-block center-text">', $str);
 }
 
 /**
