@@ -104,4 +104,12 @@ elseif ($flag == 'bns') {
 	}
 }
 
+// kyhuyen
+elseif ($flag == 'kh') {
+	preg_match_all('@<ul>(.+?)</ul>@si', $str, $out);
+	unset($out[1][0]) ;
+	$links = get_links(print_r($out[1], true));
+	$data = $links;
+}
+
 echo json_encode($data);
