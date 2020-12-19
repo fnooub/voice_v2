@@ -76,6 +76,9 @@ elseif ($flag == 'kh') {
 	$noidung = get_row('<div class="story-content.+?">', '<div class="w-100 center-block center-text">', $str);
 }
 
+// remove ads
+$noidung = preg_replace(array('/Bạn đang đọc truyện được copy tại/iu', '/Bạn đang đọc truyện được lấy tại/iu', '/Bạn đang đọc truyện tại/iu', '/Text được lấy tại/iu', '/nguồn truyện\s*:/iu', '/nguồn\s*:/iu', '/chấm cơm\.?/iu', '/www\s*\./i', '/https?\s*:\s*\/?\/?/i', '/\.\s*vn/i', '/\.\s*com/iu', '/Truyen\s*FULL/iu', '/truyện\s*full/iu', '/Đọc Truyện Online Tại/iu', '/Đọc Truyện Kiếm Hiệp Hay Nhất\:?/iu', '/Truyện.{1,10}Hiệp/iu', '/truyenyy/iu', '/Truyện\s*YY/iu'), '', $noidung);
+
 /**
  * output
  */
