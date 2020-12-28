@@ -41,6 +41,10 @@ if (isset($_POST['link'])) {
 	elseif (preg_match('@kyhuyen@si', $link)) {
 		$flag = 'kh';
 	}
+	// tyy
+	elseif (preg_match('@truyenyy@si', $link)) {
+		$flag = 'tyy';
+	}
 
 	$stmt = $db->prepare('SELECT id FROM site WHERE url = :url');
 	$stmt->execute(array(':url' => $link ));

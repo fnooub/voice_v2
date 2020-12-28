@@ -112,4 +112,14 @@ elseif ($flag == 'kh') {
 	$data = $links;
 }
 
+// truyenyy
+elseif ($flag == 'tyy') {
+	preg_match('@<li>(\d+) <small>Chương</small></li>@si', $str, $soChuong);
+
+	// lay link
+	for ($i = 1; $i <= $soChuong[1]; $i++) {
+		$data[] = $link . 'chuong-' . $i . '.html';
+	}
+}
+
 echo json_encode($data);
