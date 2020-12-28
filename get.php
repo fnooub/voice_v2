@@ -79,7 +79,7 @@ elseif ($flag == 'kh') {
 // tyy
 elseif ($flag == 'tyy') {
 	$tieude = get_row('<h1.+?>\s*', '\s*</h1>', $str);
-	$noidung = get_row('<div class="inner"><div>', '</div></div>', $str);
+	$noidung = get_row('<div id="inner_chap_content_1"><div>', '</div></div>', $str);
 }
 
 /**
