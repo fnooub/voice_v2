@@ -36,6 +36,7 @@ if ($flag == 'mtc') {
 	$tieude = get_row('<div class="h1 mb-4 font-weight-normal nh-read__title">', '</div>', $str);
 	$noidung = get_row('id="js-read__content".+?>', '<i class="h4 nh-icon icon-star"></i>', $str, false);
 	$noidung = preg_replace('@<div.*?>.+?</div>@si', '', $noidung);
+	$noidung = preg_replace('/(.+)<br>.+?<a href=".+?" target="_blank">.+/', '$1', $noidung);
 }
 // vtruyen
 elseif ($flag == 'vt') {
