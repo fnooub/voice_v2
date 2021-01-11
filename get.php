@@ -37,7 +37,7 @@ if ($flag == 'mtc') {
 	$noidung = get_row('id="js-read__content".+?>', '<i class="h4 nh-icon icon-star"></i>', $str, false);
 	$noidung = preg_replace('@<div.*?>.+?</div>@si', '', $noidung);
 	if ($site['nl2p'] == 'yes') {
-		$noidung = preg_replace('/>[^>]*<a href=".+?" target="_blank">.+?</', '><', $noidung);
+		$noidung = preg_replace('/>[^>]*<a href=\"[^\"]*\" target=\"_blank\">.+?</', '><', $noidung);
 	}
 }
 // vtruyen
