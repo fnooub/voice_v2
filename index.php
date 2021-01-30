@@ -54,6 +54,10 @@ if (isset($_POST['submit'])) {
 		elseif ($flag == 'tct') {
 			$tieude = get_rows('<h1>', '</h1>', $conts);
 		}
+		// chivi
+		elseif ($flag == 'chivi') {
+			$tieude = get_rows('</style>\s*<title>', '</title>', $conts);
+		}
 		// khac
 		else {
 			$tieude = get_rows('<title>', '</title>', $conts);

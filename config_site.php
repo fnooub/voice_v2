@@ -53,6 +53,10 @@ if (isset($_POST['submit'])) {
 		if ($flag == 'mtc') {
 			$tieude = get_rows('<div class="h1 mb-4 font-weight-normal nh-read__title">', '</div>', $conts);
 		}
+		// chivi
+		elseif ($flag == 'chivi') {
+			$tieude = get_rows('</style>\s*<title>', '</title>', $conts);
+		}
 		// khac
 		else {
 			$tieude = get_rows('<title>', '</title>', $conts);

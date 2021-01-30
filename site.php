@@ -45,6 +45,13 @@ if (isset($_POST['link'])) {
 	elseif (preg_match('@truyenyy@si', $link)) {
 		$flag = 'tyy';
 	}
+	// chivi
+	elseif (preg_match('@chivi@si', $link)) {
+		$flag = 'chivi';
+		if (!preg_match('/\/content/', $link)) {
+			$link = $link . '/content';
+		}
+	}
 
 	$stmt = $db->prepare('SELECT id FROM site WHERE url = :url');
 	$stmt->execute(array(':url' => $link ));
@@ -102,7 +109,7 @@ $result = $stmt->fetchAll();
 		<?php foreach ($result as $row): ?>
 			<?php
 			$name = parse_url($row['url'])['path'];
-			$name = str_replace(array('/truyen/', '/doc-truyen/', '/chuong/', '/reader/', '/muc-luc', '/', '.html'), '', $name);
+			$name = str_replace(array('/truyen/', '/doc-truyen/', '/chuong/', '/reader/', '/muc-luc', '/content', '/', '.html'), '', $name);
 			?>
 			<pre>[<?= $row['id'] ?>] <a href="config_site.php?site_id=<?= $row['id'] ?>"><?= $name ?></a> <a href="regex.php?site_id=<?= $row['id'] ?>" style="background-color: yellow">Regex</a> <a href="<?= $row['url'] ?>"><span style="background-color: #c9f795"><?= $row['flag'] ?></span></a> <a href="<?= base_url('save.php?site_id=' . $row['id']) ?>"><span style="background-color: #ffc107">save</span></a></pre>
 		<?php endforeach ?>

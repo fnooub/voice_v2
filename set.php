@@ -122,4 +122,23 @@ elseif ($flag == 'tyy') {
 	}
 }
 
+// chivi.xyz
+elseif ($flag == 'chivi') {
+	preg_match('/<a href=".+?page=(\d+)".+?<use xlink:href="\/icons\.svg#chevrons-right"><\/use>/', $str, $soTrang);
+	// get multi pages
+	$urls = array();
+	for ($i=1; $i <= $soTrang[1]; $i++) { 
+		$urls[] = $link . '?page=' . $i;
+	}
+
+	$multi_curl = multi_curl($urls);
+
+	$list_chapter = get_rows('<div class="chlist _page', '<nav class="pagi', $multi_curl);
+	$links = get_links(print_r($list_chapter, true));
+	$data = array();
+	foreach ($links as $lnk) {
+		$data[] = 'https://chivi.xyz' . $lnk;
+	}
+}
+
 echo json_encode($data);
