@@ -89,6 +89,7 @@ elseif ($flag == 'tyy') {
 elseif ($flag == 'chivi') {
 	$tieude = get_row('<h1.+?>\s*', '\s*</h1>', $str);
 	$noidung = get_row('</h1>', '</article>', $str);
+$noidung = preg_replace('/<section>.+?<\/section>/', '', $noidung);
 }
 
 /**
